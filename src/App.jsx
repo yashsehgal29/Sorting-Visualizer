@@ -1,10 +1,17 @@
-import { useState ,useEffect} from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Navbar from './components/Navbar'
-import Bars from './components/Bars'
-import { bubbleSort,mergeSort,quickSort,selectionSort,insertionSort } from './components/SortingAlgos'
+import { useState, useEffect } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Bars from "./components/Bars";
+import {
+  bubbleSort,
+  mergeSort,
+  quickSort,
+  selectionSort,
+  insertionSort
+} from "./components/SortingAlgos";
+
 function App() {
   const [array, setarray] = useState([]);
   const [speed, setspeed] = useState(20);
@@ -12,60 +19,69 @@ function App() {
   const [arraysize, setarraysize] = useState(50);
   const [barColors, setBarColors] = useState([]);
 
-const setBarColorsHandler = (indices, action) => {
-  setBarColors((prevColors) => {
-    const newColors = prevColors.slice();
-    const color = action === 'compare' ? 'red' : action === 'swap' ? 'green' : action==='copy'?'blue':'default';
-    indices.forEach((index) => {
-      newColors[index] = color;
+  const setBarColorsHandler = (indices, action) => {
+    setBarColors((prevColors) => {
+      const newColors = prevColors.slice();
+      const color =
+        action === "compare"
+          ? "red"
+          : action === "swap"
+          ? "green"
+          : action === "copy"
+          ? "blue"
+          : "default";
+      indices.forEach((index) => {
+        newColors[index] = color;
+      });
+      return newColors;
     });
-    return newColors;
-  });
-};
-  
+  };
+
   const startSort = () => {
     switch (sort) {
-      case 'bubble':
+      case "bubble":
         bubbleSort(array, setarray, speed, setBarColorsHandler);
         break;
-      case 'selection':
+      case "selection":
         selectionSort(array, setarray, speed, setBarColorsHandler);
         break;
-      case 'insertion':
+      case "insertion":
         insertionSort(array, setarray, speed, setBarColorsHandler);
         break;
-      case 'merge':
+      case "merge":
         mergeSort(array, setarray, speed, setBarColorsHandler);
         break;
-      case 'quick':
+      case "quick":
         quickSort(array, setarray, speed, setBarColorsHandler);
         break;
       default:
         break;
     }
   };
+
   const generateRandomArray = () => {
-    const newArr = Array.from({ length: arraysize }, () => Math.floor(Math.random() * 496) + 5);
+    const newArr = Array.from(
+      { length: arraysize },
+      () => Math.floor(Math.random() * 496) + 5
+    );
     setarray(newArr);
-    setBarColors(new Array(newArr.length).fill('default'));
+    setBarColors(new Array(newArr.length).fill("default"));
   };
 
   return (
-    <div className='w-screen h-screen bg-yellow-300'>
+    <div className="flex flex-col w-screen h-screen">
       <Navbar
         setspeed={setspeed}
         setarraysize={setarraysize}
         startSort={startSort}
         generateRandomArray={generateRandomArray}
         setsort={setsort}
-
       />
-      <Bars array={array} barColors={barColors} />
-      <div className='flex items-center justify-center w-full p-2 text-3xl font-bold text-center '>
-        <p>Sorting Visualizer</p>
+      <div className="flex items-center justify-center w-screen h-full bg-red-400">
+        <Bars array={array} barColors={barColors} />
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

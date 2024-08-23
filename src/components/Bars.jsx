@@ -1,23 +1,26 @@
-import React from 'react'
+import React from "react";
 
-const Bars = ({array, barColors }) => {
-    
+const Bars = ({ array, barColors }) => {
+  const barWidth = `${Math.min(40 / array.length, 4)}%`; // Adjust width based on screen size
 
-    const barwidth = 100/array.length;
   return (
-      <div className='flex justify-center bg-red-400 h-3/4'>
-          <div className='flex items-end justify-center '>
-              {array.map((value, idx) => (
-        <div 
-          className="bg-teal-500 mx-0.5 " 
-          key={idx} 
-         style={{ height: `${value + 50}px`, width:"10px" , backgroundColor: barColors[idx] === 'default' ? 'teal' : barColors[idx] }}
-              > { value}</div>
+    <div className="flex items-end justify-center w-full lg:mt-5">
+      {array.map((value, idx) => (
+        <div
+          key={idx}
+          style={{
+            height: `${value + 50}px`,
+            width: barWidth,
+            backgroundColor:
+              barColors[idx] === "default" ? "teal" : barColors[idx]
+          }}
+          className="mx-[1px] flex justify-center items-end"
+        >
+          <span className="text-white">{value}</span>
+        </div>
       ))}
-          </div>
-          
     </div>
-  )
-}
+  );
+};
 
-export default Bars
+export default Bars;
