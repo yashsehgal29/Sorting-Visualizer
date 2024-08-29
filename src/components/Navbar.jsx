@@ -8,18 +8,18 @@ const Navbar = ({
   setsort
 }) => {
   return (
-    <div>
-      <div className="flex items-center justify-center w-full p-2 text-3xl font-bold text-center bg-[#26001B] ">
-        <p className="text-[#FFF600]">Sorting Visualizer</p>
+    <div className="flex flex-col w-4/5 mt-2 rounded-md shadow-lg">
+      <div className="flex items-center justify-center w-full p-2 text-3xl font-bold text-centere">
+        <p className="text-black">Sorting Visualizer</p>
       </div>
-      <div className="w-full bg-[#26001B] p-4 flex flex-col lg:flex-row justify-center items-center">
+      <div className="flex flex-col items-center justify-center w-full p-4 bg-white lg:flex-row rounded-xl">
         <div className="flex flex-col items-center lg:flex-row gap-y-4 lg:gap-x-6">
-          <div className="flex flex-col items-center text-center lg:items-start">
-            <span className="text-lg lg:text-xl text-[#FFF600] font-bold ">
+          <div className="flex flex-col items-center text-center lg:items-start gap-y-2">
+            <span className="text-lg font-bold text-black lg:text-xl ">
               Speed:
             </span>
             <select
-              className="p-1 text-lg font-bold text-center rounded-lg"
+              className="p-1 text-lg font-bold text-center border-2 rounded-lg shadow-md black"
               name="speed"
               defaultValue="Fast"
               onChange={(e) => setspeed(Number(e.target.value))}
@@ -31,8 +31,8 @@ const Navbar = ({
               <option value={5}>Very Fast</option>
             </select>
           </div>
-          <div className="flex flex-col items-center ">
-            <span className="text-lg lg:text-xl text-[#FFF600] font-bold">
+          <div className="flex flex-col items-center w-3/4 ">
+            <span className="text-lg font-bold text-black lg:text-xl">
               Array Size:
             </span>
             <input
@@ -46,19 +46,19 @@ const Navbar = ({
           </div>
           <div className="flex justify-center w-full lg:w-auto">
             <button
-              className="bg-[#FF005C] text-white font-bold p-2 rounded-xl hover:bg-white items-center hover:text-[#FF005C]"
+              className="items-center px-3 py-2 font-bold text-white bg-black shadow-xl rounded-xl hover:bg-white hover:text-black"
               onClick={generateRandomArray}
             >
               Generate New Array
             </button>
           </div>
         </div>
-        <div className="flex flex-col items-center lg:w-1/3">
-          <span className="text-lg lg:text-xl text-[#FFF600] font-bold">
+        <div className="flex flex-col items-center mt-2 lg:w-1/3">
+          <span className="text-lg font-bold text-black lg:text-xl">
             Sorting Algorithm
           </span>
           <select
-            className="p-1 text-lg font-bold text-center rounded-lg"
+            className="p-1 mt-1 text-lg font-bold text-center rounded-lg shadow-md"
             name="algo"
             onClick={(e) => setsort(e.target.value)}
           >
@@ -71,7 +71,7 @@ const Navbar = ({
         </div>
         <div className="flex justify-center mt-4 lg:mt-0 lg:w-1/4">
           <button
-            className="bg-[#FF005C] text-white p-2 rounded-xl font-bold hover:bg-white w-24  hover:text-[#FF005C]"
+            className="w-24 p-2 font-bold text-white bg-black shadow-lg rounded-xl hover:bg-white hover:text-black"
             onClick={startSort}
           >
             Start

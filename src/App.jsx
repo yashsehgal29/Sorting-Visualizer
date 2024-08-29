@@ -69,15 +69,19 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col w-screen h-screen">
-      <Navbar
-        setspeed={setspeed}
-        setarraysize={setarraysize}
-        startSort={startSort}
-        generateRandomArray={generateRandomArray}
-        setsort={setsort}
-      />
-      <div className="flex items-center justify-center w-screen h-full bg-red-400">
+    <div className="flex flex-col w-screen min-h-screen rounded-lg bg-gray-50 ">
+      <div className="flex flex-col items-center w-full shadow-red-100">
+        <Navbar
+          setspeed={setspeed}
+          setarraysize={setarraysize}
+          startSort={startSort}
+          generateRandomArray={generateRandomArray}
+          setsort={setsort}
+          className="rounded-lg"
+        />
+      </div>
+
+      <div className="flex items-center justify-center w-screen h-full mt-2">
         <Bars array={array} barColors={barColors} />
       </div>
     </div>
